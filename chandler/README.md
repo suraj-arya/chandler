@@ -1,39 +1,34 @@
-# A sample Python project
+# Python Size and Time Based Logging File Rotating Handler
 
-![Python Logo](https://www.python.org/static/community_logos/python-logo.png "Sample inline image")
+Python logging's file based [handlers](https://docs.python.org/3/library/logging.handlers.html) have two different kinds of rotation. 
+* [Size based rotation](https://docs.python.org/3/library/logging.handlers.html#logging.handlers.RotatingFileHandler)
+* [Time based rotation](https://docs.python.org/3/library/logging.handlers.html#logging.handlers.TimedRotatingFileHandler)
 
-A sample project that exists as an aid to the [Python Packaging User
-Guide][packaging guide]'s [Tutorial on Packaging and Distributing
-Projects][distribution tutorial].
+However, these rotations work in isolation. Only one handler can be attached to a log file.
+One can only add either Size based rotation or Time based rotation.
 
-This project does not aim to cover best practices for Python project
-development as a whole. For example, it does not provide guidance or tool
-recommendations for version control, documentation, or testing.
+Using chandler.handler.SizedAndTimedRotatingHandler you can rotate the files based on both time and size. Files will be rotated whenever either of the conditions are met.
 
-[The source for this project is available here][src].
+### How to Use
+ import the handler
+ ```python
+from chandler.handler import SizedAndTimedRotatingHandler
+```
 
-Most of the configuration for a Python project is done in the `setup.py` file,
-an example of which is included in this project. You should edit this file
-accordingly to adapt this sample project to your needs.
+Then you can initialise your loggers and append this handler.
+```python
+logger = logging.getLogger('test-logger')
+log_file_path = '/var/log/test/logging.log'
+rotating_handler = SizedAndTimedRotatingHandler(log_file_path, when='h', interval=1, max_bytes=50000, backup_count=3)
+logger.addHandler(rotating_handler)
+```
+In the above example the handler is configured to rotate every one hour or whenever the file size reaches 50k bytes.
+This handler is built on top of [TimedRotatingFileHandler](https://docs.python.org/3/library/logging.handlers.html#logging.handlers.TimedRotatingFileHandler), so most of the arguments are similar to that of TimedRotatingFileHandler. 
 
-----
+### installation 
+You can install with pip
+```bash
+$ pip install chandler
+```
+### Contribution
 
-This is the README file for the project.
-
-The file should use UTF-8 encoding and can be written using
-[reStructuredText][rst] or [markdown][md use] with the appropriate [key set][md
-use]. It will be used to generate the project webpage on PyPI and will be
-displayed as the project homepage on common code-hosting services, and should be
-written for that purpose.
-
-Typical contents for this file would include an overview of the project, basic
-usage examples, etc. Generally, including the project changelog in here is not a
-good idea, although a simple “What's New” section for the most recent version
-may be appropriate.
-
-[packaging guide]: https://packaging.python.org
-[distribution tutorial]: https://packaging.python.org/tutorials/packaging-projects/
-[src]: https://github.com/pypa/sampleproject
-[rst]: http://docutils.sourceforge.net/rst.html
-[md]: https://tools.ietf.org/html/rfc7764#section-3.5 "CommonMark variant"
-[md use]: https://packaging.python.org/specifications/core-metadata/#description-content-type-optional
