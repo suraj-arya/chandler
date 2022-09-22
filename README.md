@@ -32,3 +32,6 @@ $ pip install chandler
 ```
 ### Contribution
 
+
+#### Authors
+* [Suraj Arya](https://github.com/suraj-arya)
