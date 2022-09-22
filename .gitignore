@@ -2,6 +2,7 @@ build/
 .*~
 .nox
 *.pyc
+.idea
 __pycache__
 .DS_Store
 /locales/
