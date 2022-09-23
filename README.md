@@ -7,7 +7,7 @@ Python logging's file based [handlers](https://docs.python.org/3/library/logging
 However, these rotations work in isolation. Only one handler can be attached to a log file.
 One can only add either Size based rotation or Time based rotation.
 
-Using chandler.handler.SizedAndTimedRotatingHandler you can rotate the files based on both time and size. Files will be rotated whenever either of the conditions are met.
+Using `chandler.handler.SizedAndTimedRotatingHandler` you can rotate the files based on both time and size. Files will be rotated whenever either of the conditions are met.
 
 ### How to Use
  import the handler
