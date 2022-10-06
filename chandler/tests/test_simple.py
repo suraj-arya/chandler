@@ -4,13 +4,17 @@
 
 import unittest
 
-from sample.simple import add_one
+# python setup.py install before running tests
+from chandler.handler import SizedAndTimedRotatingHandler
 
 
-class TestSimple(unittest.TestCase):
+class TestSizedAndTimedRotatignHandler(unittest.TestCase):
 
-    def test_add_one(self):
-        self.assertEqual(add_one(5), 6)
+    def test_rotation_on_time(self):
+        self.assertEqual(6, 6)
+
+    def test_rotation_on_size(self):
+        self.assertEqual(6, 6)
 
 
 if __name__ == '__main__':
