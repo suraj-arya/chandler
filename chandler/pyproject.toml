@@ -3,3 +3,22 @@
 # https://pip.pypa.io/en/stable/reference/pip/#pep-517-and-518-support
 requires = ["setuptools>=43.0.0", "wheel"]
 build-backend = "setuptools.build_meta"
+
+[project]
+name = "chandler-handler"
+version = "0.0.2"
+authors = [
+  { name="Suraj Arya", email="surajarya@example.com" },
+]
+description = "Python Size and Time Based Logging File Rotating Handler"
+readme = "README.md"
+requires-python = ">=3.7"
+classifiers = [
+    "Programming Language :: Python :: 3",
+    "License :: OSI Approved :: MIT License",
+    "Operating System :: OS Independent",
+]
+
+[project.urls]
+"Homepage" = "https://github.com/suraj-arya/chandler"
+"Bug Tracker" = "https://github.com/suraj-arya/chandler/issues"

@@ -28,7 +28,7 @@ This handler is built on top of [TimedRotatingFileHandler](https://docs.python.o
 ### installation 
 You can install with pip
 ```bash
-$ pip install chandler
+$ pip install chandler-handler
 ```
 ### Contribution
 
